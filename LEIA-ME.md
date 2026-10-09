@@ -1,4 +1,4 @@
-# Krapka (Крапка): app
+# Krapka — Dithering & Pixel Art (Крапка)
 
 Ferramenta de dithering (pontilhado de 1 bit) criada para as artes do Grupo Folclórico JETTIA. Krapka (Крапка) quer dizer "ponto" em ucraniano. É um app web instalável (PWA): depois de publicado, instala no computador e no celular, funciona sem internet e baixa os arquivos direto.
 
@@ -42,4 +42,4 @@ e abra `http://localhost:8080`.
 
 ## Atualizar depois
 
-Substitua os arquivos no repositório e troque o número em `sw.js` (`krapka-v4` para `v5`, e assim por diante), para os aparelhos baixarem a versão nova.
+Substitua os arquivos no repositório e troque o número em `sw.js` (`krapka-v5` para `v6`, e assim por diante), para os aparelhos baixarem a versão nova.
