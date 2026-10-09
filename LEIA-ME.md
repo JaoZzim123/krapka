@@ -6,7 +6,9 @@ Ferramenta de dithering (pontilhado de 1 bit) criada para as artes do Grupo Folc
 
 | Arquivo | Para que serve |
 |---|---|
-| `index.html` | O app inteiro (interface e processamento) |
+| `index.html` | O app inteiro, compactado (é gerado a partir de `src/krapka.html`) |
+| `src/krapka.html` | Código-fonte legível do app: é aqui que se edita |
+| `tools/` | Script que gera o `index.html` a partir da fonte |
 | `privacidade.html` | Política de privacidade (exigida pela Play Store) |
 | `sw.js` | Guarda o app no aparelho para funcionar offline |
 | `manifest.webmanifest` | Nome, cores e ícones para a instalação |
@@ -42,7 +44,10 @@ e abra `http://localhost:8080`.
 
 ## Atualizar depois
 
-Substitua os arquivos no repositório e troque o número em `sw.js` (`krapka-v5` para `v6`, e assim por diante), para os aparelhos baixarem a versão nova.
+1. Edite `src/krapka.html` (a mesma página roda como artefato no Claude, com as fontes do Google Fonts).
+2. Gere o `index.html`: `cd tools && npm ci && node build.mjs` (precisa do Node 20 ou mais novo).
+3. Troque o número em `sw.js` (`krapka-v7` para `v8`, e assim por diante), para os aparelhos baixarem a versão nova.
+4. Envie para o GitHub: o site atualiza sozinho e o APK novo sai em **Releases**.
 
 ## App Android (APK) independente do site
 

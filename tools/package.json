@@ -1,0 +1,12 @@
+{
+  "name": "krapka-build",
+  "private": true,
+  "type": "module",
+  "description": "Gera o index.html publicado a partir de src/krapka.html",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "devDependencies": {
+    "html-minifier-terser": "7.2.0"
+  }
+}
