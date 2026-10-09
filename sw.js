@@ -1,6 +1,6 @@
 // Krapka: guarda o app no aparelho para funcionar sem internet.
 // Ao publicar uma versão nova, troque o número abaixo para os aparelhos baixarem a atualização.
-const VERSION = 'krapka-v5';
+const VERSION = 'krapka-v6';
 const CDN_CACHE = 'krapka-cdn';
 const SHELL = [
   './',

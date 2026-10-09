@@ -1,0 +1,70 @@
+plugins {
+    id "com.android.application"
+}
+
+// O app web (index.html, fontes, ícones) vem da raiz do repositório e vai dentro do APK.
+def webRoot = rootProject.file("..")
+def wwwOut = layout.buildDirectory.dir("generated/www")
+def copyWeb = tasks.register("copyWeb", Sync) {
+    from(webRoot) {
+        include "index.html", "privacidade.html", "fonts/**", "icons/**"
+    }
+    into wwwOut.map { it.dir("www") }
+}
+
+// Assinatura: usa a chave guardada nos Secrets do GitHub, se existir; senão, a chave de teste (debug).
+def ks = System.getenv("KRAPKA_KEYSTORE_FILE")
+def ksPass = System.getenv("KRAPKA_KEY_PASSWORD")
+def hasKey = ks != null && !ks.isEmpty() && file(ks).exists() && ksPass
+
+android {
+    namespace "com.jaozzim123.krapka"
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.jaozzim123.krapka"
+        minSdk 29
+        targetSdk 35
+        versionCode Integer.parseInt(System.getenv("KRAPKA_VERSION_CODE") ?: "1")
+        versionName System.getenv("KRAPKA_VERSION_NAME") ?: "1.0"
+    }
+
+    signingConfigs {
+        if (hasKey) {
+            release {
+                storeFile file(ks)
+                storePassword ksPass
+                keyAlias System.getenv("KRAPKA_KEY_ALIAS") ?: "krapka"
+                keyPassword ksPass
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            signingConfig hasKey ? signingConfigs.release : signingConfigs.debug
+        }
+    }
+
+    sourceSets {
+        main.assets.srcDir(wwwOut)
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    androidResources {
+        noCompress += ["woff2", "png"]
+    }
+}
+
+tasks.named("preBuild") { dependsOn copyWeb }
+
+dependencies {
+    implementation "androidx.webkit:webkit:1.12.1"
+}

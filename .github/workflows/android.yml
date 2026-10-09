@@ -1,0 +1,87 @@
+name: APK Android
+
+# Compila o app Android (com o Krapka inteiro dentro) e publica o APK em "Releases".
+# O GitHub só compila: o app instalado funciona sozinho, offline, sem acessar o site.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "privacidade.html"
+      - "fonts/**"
+      - "icons/**"
+      - "android/**"
+      - ".github/workflows/android.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apk
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      KRAPKA_VERSION_CODE: ${{ github.run_number }}
+      KRAPKA_VERSION_NAME: 1.0.${{ github.run_number }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.11.1"
+
+      # Chave de assinatura própria (opcional): Settings > Secrets > Actions
+      #   KRAPKA_KEYSTORE_BASE64  = o arquivo .keystore em base64
+      #   KRAPKA_KEY_PASSWORD     = a senha
+      #   KRAPKA_KEY_ALIAS        = o apelido da chave (se não for "krapka")
+      # Sem ela, o APK é assinado com uma chave de teste nova a cada compilação.
+      - name: Chave de assinatura
+        env:
+          KS: ${{ secrets.KRAPKA_KEYSTORE_BASE64 }}
+        run: |
+          if [ -n "$KS" ]; then
+            echo "$KS" | base64 -d > "$RUNNER_TEMP/krapka.keystore"
+            echo "KRAPKA_KEYSTORE_FILE=$RUNNER_TEMP/krapka.keystore" >> "$GITHUB_ENV"
+            echo "Assinando com a chave dos Secrets."
+          else
+            echo "Sem chave nos Secrets: assinando com chave de teste."
+          fi
+
+      - name: Compilar
+        env:
+          KRAPKA_KEY_PASSWORD: ${{ secrets.KRAPKA_KEY_PASSWORD }}
+          KRAPKA_KEY_ALIAS: ${{ secrets.KRAPKA_KEY_ALIAS }}
+        run: gradle -p android --no-daemon assembleRelease bundleRelease
+
+      - name: Separar arquivos
+        run: |
+          mkdir -p out
+          cp android/app/build/outputs/apk/release/app-release.apk "out/Krapka-$KRAPKA_VERSION_NAME.apk"
+          cp android/app/build/outputs/bundle/release/app-release.aab "out/Krapka-$KRAPKA_VERSION_NAME.aab"
+          ls -la out
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Krapka-${{ env.KRAPKA_VERSION_NAME }}
+          path: out/*
+
+      - name: Publicar em Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.KRAPKA_VERSION_NAME }}
+          name: Krapka ${{ env.KRAPKA_VERSION_NAME }}
+          make_latest: true
+          body: |
+            **Para instalar no celular:** baixe o arquivo `.apk` abaixo e abra.
+            O app funciona offline; só o recorte com IA usa a internet (para baixar o modelo uma vez).
+            O `.aab` é o pacote para enviar à Play Store.
+          files: out/*
