@@ -11,11 +11,12 @@ Ferramenta de dithering (pontilhado de 1 bit) criada para as artes do Grupo Folc
 | `sw.js` | Guarda o app no aparelho para funcionar offline |
 | `manifest.webmanifest` | Nome, cores e ícones para a instalação |
 | `icons/` | Ícones do app |
+| `fonts/` | Fontes (Archivo e IBM Plex Mono), servidas pelo próprio app |
 
 ## Publicar no GitHub Pages (grátis)
 
 1. Entre em github.com e crie um repositório novo, por exemplo `krapka`, marcado como **Public**.
-2. Na página do repositório, clique em **Add file > Upload files** e arraste **o conteúdo** desta pasta (`index.html`, `sw.js`, `manifest.webmanifest` e a pasta `icons`). Clique em **Commit changes**.
+2. Na página do repositório, clique em **Add file > Upload files** e arraste **o conteúdo** desta pasta (`index.html`, `privacidade.html`, `sw.js`, `manifest.webmanifest` e as pastas `icons` e `fonts`). Clique em **Commit changes**.
 3. Vá em **Settings > Pages**. Em *Branch*, escolha `main` e a pasta `/ (root)`, e clique em **Save**.
 4. Em um ou dois minutos o app fica no ar em `https://SEU-USUARIO.github.io/krapka/`.
 
@@ -41,4 +42,4 @@ e abra `http://localhost:8080`.
 
 ## Atualizar depois
 
-Substitua os arquivos no repositório e troque o número em `sw.js` (`krapka-v3` para `v4`, e assim por diante), para os aparelhos baixarem a versão nova.
+Substitua os arquivos no repositório e troque o número em `sw.js` (`krapka-v4` para `v5`, e assim por diante), para os aparelhos baixarem a versão nova.

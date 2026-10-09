@@ -1,6 +1,6 @@
 // Krapka: guarda o app no aparelho para funcionar sem internet.
 // Ao publicar uma versão nova, troque o número abaixo para os aparelhos baixarem a atualização.
-const VERSION = 'krapka-v3';
+const VERSION = 'krapka-v4';
 const CDN_CACHE = 'krapka-cdn';
 const SHELL = [
   './',
@@ -10,10 +10,16 @@ const SHELL = [
   'icons/icon-192.png',
   'icons/icon-512.png',
   'icons/icon-maskable-512.png',
-  'icons/apple-touch-icon.png'
+  'icons/apple-touch-icon.png',
+  'fonts/fonts.css',
+  'fonts/archivo-latin-400.woff2',
+  'fonts/archivo-latin-700.woff2',
+  'fonts/ibm-plex-mono-latin-400.woff2',
+  'fonts/ibm-plex-mono-latin-600.woff2',
+  'fonts/ibm-plex-mono-cyrillic-400.woff2'
 ];
-// fontes e a biblioteca do recorte com IA (o modelo em si fica guardado pela própria biblioteca)
-const CDN_HOSTS = ['fonts.googleapis.com', 'fonts.gstatic.com', 'cdn.jsdelivr.net'];
+// biblioteca do recorte com IA (o modelo em si fica guardado pela própria biblioteca)
+const CDN_HOSTS = ['cdn.jsdelivr.net'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(VERSION).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
@@ -48,7 +54,7 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
-  // fontes e biblioteca: usa o cache e atualiza em segundo plano
+  // biblioteca: usa o cache e atualiza em segundo plano
   if (CDN_HOSTS.includes(url.hostname)) {
     e.respondWith(
       caches.open(CDN_CACHE).then(async (c) => {
