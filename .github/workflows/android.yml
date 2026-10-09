@@ -39,10 +39,11 @@ jobs:
         with:
           gradle-version: "8.11.1"
 
-      # Chave de assinatura própria (opcional): Settings > Secrets > Actions
+      # Chave de assinatura própria: Settings > Secrets and variables > Actions
       #   KRAPKA_KEYSTORE_BASE64  = o arquivo .keystore em base64
-      #   KRAPKA_KEY_PASSWORD     = a senha
-      #   KRAPKA_KEY_ALIAS        = o apelido da chave (se não for "krapka")
+      #   KRAPKA_KEY_ALIAS        = o apelido da chave (alias)
+      #   KRAPKA_KEY_PASSWORD     = a senha da chave (key password)
+      #   KRAPKA_STORE_PASSWORD   = a senha do arquivo (store password), se for diferente da da chave
       # Sem ela, o APK é assinado com uma chave de teste nova a cada compilação.
       - name: Chave de assinatura
         env:
@@ -59,6 +60,7 @@ jobs:
       - name: Compilar
         env:
           KRAPKA_KEY_PASSWORD: ${{ secrets.KRAPKA_KEY_PASSWORD }}
+          KRAPKA_STORE_PASSWORD: ${{ secrets.KRAPKA_STORE_PASSWORD }}
           KRAPKA_KEY_ALIAS: ${{ secrets.KRAPKA_KEY_ALIAS }}
         run: gradle -p android --no-daemon assembleRelease bundleRelease
 

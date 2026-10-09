@@ -13,8 +13,10 @@ def copyWeb = tasks.register("copyWeb", Sync) {
 }
 
 // Assinatura: usa a chave guardada nos Secrets do GitHub, se existir; senão, a chave de teste (debug).
+// A senha do arquivo (store) pode ser diferente da senha da chave, como nas chaves do PWABuilder.
 def ks = System.getenv("KRAPKA_KEYSTORE_FILE")
 def ksPass = System.getenv("KRAPKA_KEY_PASSWORD")
+def storePass = System.getenv("KRAPKA_STORE_PASSWORD") ?: ksPass
 def hasKey = ks != null && !ks.isEmpty() && file(ks).exists() && ksPass
 
 android {
@@ -33,7 +35,7 @@ android {
         if (hasKey) {
             release {
                 storeFile file(ks)
-                storePassword ksPass
+                storePassword storePass
                 keyAlias System.getenv("KRAPKA_KEY_ALIAS") ?: "krapka"
                 keyPassword ksPass
             }

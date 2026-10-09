@@ -43,3 +43,32 @@ e abra `http://localhost:8080`.
 ## Atualizar depois
 
 Substitua os arquivos no repositório e troque o número em `sw.js` (`krapka-v5` para `v6`, e assim por diante), para os aparelhos baixarem a versão nova.
+
+## App Android (APK) independente do site
+
+A pasta `android/` é um app Android que leva o Krapka inteiro dentro do APK: abre sem internet e não acessa o site. Só o recorte com IA usa a internet, para baixar o modelo uma vez.
+
+- **Compilação:** a cada mudança no app (ou em **Actions > APK Android > Run workflow**), o GitHub compila e publica o `.apk` e o `.aab` em **Releases**. O GitHub só compila; o app instalado não depende dele.
+- **Instalar no celular:** baixe o `.apk` da versão mais recente em Releases e abra no Android (10 ou mais novo).
+- **Arquivos salvos:** PNG em *Imagens/Krapka* (aparece na galeria); ZIP de camadas em *Downloads/Krapka*.
+- **Abrir fotos pelo Krapka:** na galeria, *Compartilhar > Krapka* abre a foto direto no app.
+- **Play Store:** envie o `.aab`. O nome do pacote é `com.jaozzim123.krapka`.
+
+### Chave de assinatura (Secrets)
+
+Sem chave cadastrada, o APK sai com uma chave de teste diferente a cada compilação, e cada versão nova precisa desinstalar a anterior. Com a chave, todas as versões se atualizam por cima e o `.aab` serve para a Play Store. Em **Settings > Secrets and variables > Actions > New repository secret**:
+
+| Nome | Valor |
+|---|---|
+| `KRAPKA_KEYSTORE_BASE64` | o arquivo `.keystore` convertido em base64 |
+| `KRAPKA_KEY_ALIAS` | o apelido (alias) da chave |
+| `KRAPKA_KEY_PASSWORD` | a senha da chave (key password) |
+| `KRAPKA_STORE_PASSWORD` | a senha do arquivo (store password), só se for diferente da senha da chave |
+
+Para converter o `.keystore` em base64 no Windows (PowerShell), o resultado já vai para a área de transferência:
+
+```
+[Convert]::ToBase64String([IO.File]::ReadAllBytes("C:\caminho\signing.keystore")) | Set-Clipboard
+```
+
+Nunca coloque o arquivo `.keystore` nem as senhas no repositório: guarde em dois lugares seguros. Sem eles não dá para atualizar o app na Play Store.
