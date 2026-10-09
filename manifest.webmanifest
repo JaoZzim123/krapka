@@ -1,7 +1,8 @@
 {
-  "name": "Dither Jettiá",
-  "short_name": "Dither",
-  "description": "Pontilhado de 1 bit com as cores do Grupo Folclórico Jettiá.",
+  "id": "./",
+  "name": "Krapka",
+  "short_name": "Krapka",
+  "description": "Pontilhado de 1 bit, meio-tom e duotone para cartazes, com camadas separadas.",
   "lang": "pt-BR",
   "start_url": "./",
   "scope": "./",

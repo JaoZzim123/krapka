@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Privacidade · Krapka</title>
+<meta name="description" content="Política de privacidade do app Krapka.">
+<meta name="theme-color" content="#15120f">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=IBM+Plex+Mono:wght@400;600&family=Instrument+Serif&display=swap">
+<style>
+:root {
+  --bg: #EAE7E0; --fg: #1A1613; --muted: #6A6258; --line: #C7C1B5; --accent: #B3141C;
+  --f-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --f-body: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #13110F; --fg: #EEE9DF; --muted: #A1988C; --line: #3A342D; --accent: #F2626A; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --bg: #13110F; --fg: #EEE9DF; --muted: #A1988C; --line: #3A342D; --accent: #F2626A; color-scheme: dark; }
+* { box-sizing: border-box; }
+html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 16px; line-height: 1.6; padding-inline: 16px; padding-block: 32px 48px; }
+main { max-width: 64ch; margin: 0 auto; display: grid; gap: 4px; }
+a { color: var(--accent); }
+.back { font-family: var(--f-mono); font-size: 13px; }
+h1 { font-family: var(--f-mono); font-weight: 600; letter-spacing: -0.03em; font-size: clamp(1.9rem, 6vw, 2.8rem); line-height: 1.05; margin: 20px 0 4px; text-wrap: balance; }
+h1 em { font-style: normal; color: var(--accent); }
+.meta { font-family: var(--f-mono); font-size: 12px; color: var(--muted); letter-spacing: 0.04em; margin: 0 0 16px; }
+h2 { font-size: 1.05rem; margin: 28px 0 4px; padding-top: 16px; border-top: 1px solid var(--line); }
+p, ul { margin: 0 0 10px; }
+ul { padding-left: 1.2em; }
+li { margin-bottom: 6px; }
+.lead { font-size: 1.1rem; }
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="./">← Voltar para o app</a>
+  <h1>Política de privacidade do <em>Krapka</em></h1>
+  <p class="meta">Em vigor desde 9 de outubro de 2026</p>
+
+  <p class="lead">O Krapka não coleta, não guarda e não envia nenhum dado pessoal seu. As fotos que você abre são processadas no próprio aparelho e nunca saem dele.</p>
+
+  <h2>Quem faz o app</h2>
+  <p>O Krapka (Крапка, "ponto" em ucraniano) é uma ferramenta de design criada por João Eudorico para as artes do Grupo Folclórico de Danças Ucranianas JETTIA, de Antônio Olinto (PR), e aberta para qualquer pessoa usar.</p>
+
+  <h2>Suas fotos</h2>
+  <ul>
+    <li>Todo o processamento (pontilhado, meio-tom, cores, camadas e o recorte com IA) acontece dentro do app, no seu aparelho.</li>
+    <li>Nenhuma foto, imagem gerada ou parte delas é enviada para servidores, nossos ou de terceiros.</li>
+    <li>O app só acessa as imagens que você escolhe abrir. Ele não lê sua galeria por conta própria.</li>
+  </ul>
+
+  <h2>O que fica guardado no aparelho</h2>
+  <ul>
+    <li><strong>Suas últimas configurações</strong> (algoritmo, cores, tamanhos), para o app abrir do jeito que você deixou.</li>
+    <li><strong>Os arquivos do próprio app</strong>, para ele funcionar sem internet.</li>
+    <li><strong>O modelo de recorte com IA</strong>, se você usar essa função, para não precisar baixá-lo de novo.</li>
+  </ul>
+  <p>Nada disso identifica você, e nada é enviado para lugar nenhum. Para apagar tudo, limpe os dados do app nas configurações do aparelho ou desinstale o app.</p>
+
+  <h2>Serviços de terceiros</h2>
+  <p>Para funcionar, o app baixa alguns arquivos públicos. Nesses downloads, o seu aparelho se conecta a estes serviços, que podem registrar dados técnicos comuns de qualquer acesso à internet, como endereço IP e tipo de navegador, conforme as políticas de cada um:</p>
+  <ul>
+    <li><strong>GitHub Pages</strong> (GitHub, Inc.): hospeda os arquivos do app.</li>
+    <li><strong>Google Fonts</strong> (Google LLC): fornece as fontes tipográficas.</li>
+    <li><strong>jsDelivr</strong>: fornece a biblioteca usada no recorte com IA, só quando você usa essa função.</li>
+    <li><strong>Hugging Face</strong>: fornece o modelo de recorte MODNet, só na primeira vez que você usa essa função.</li>
+  </ul>
+  <p>Nenhum desses serviços recebe suas fotos.</p>
+
+  <h2>O que o app não faz</h2>
+  <ul>
+    <li>Não pede cadastro, login ou qualquer informação pessoal.</li>
+    <li>Não tem anúncios.</li>
+    <li>Não usa ferramentas de análise, rastreamento ou estatísticas de uso.</li>
+    <li>Não pede permissões especiais do aparelho, como câmera, localização ou contatos.</li>
+    <li>Não compartilha nem vende dados, porque não coleta nenhum.</li>
+  </ul>
+
+  <h2>Crianças</h2>
+  <p>O app pode ser usado por pessoas de qualquer idade e não coleta dados de ninguém, incluindo crianças.</p>
+
+  <h2>Mudanças nesta política</h2>
+  <p>Se o app passar a tratar dados de outra forma, esta página será atualizada antes, com a nova data de vigência no topo.</p>
+
+  <h2>Contato</h2>
+  <p>Dúvidas sobre privacidade podem ser enviadas para o e-mail de contato do desenvolvedor informado na página do Krapka na Google Play.</p>
+</main>
+</body>
+</html>

@@ -1,10 +1,11 @@
-// Dither Jettiá: guarda o app no aparelho para funcionar sem internet.
+// Krapka: guarda o app no aparelho para funcionar sem internet.
 // Ao publicar uma versão nova, troque o número abaixo para os aparelhos baixarem a atualização.
-const VERSION = 'dither-jettia-v1';
-const CDN_CACHE = 'dither-jettia-cdn';
+const VERSION = 'krapka-v3';
+const CDN_CACHE = 'krapka-cdn';
 const SHELL = [
   './',
   'index.html',
+  'privacidade.html',
   'manifest.webmanifest',
   'icons/icon-192.png',
   'icons/icon-512.png',

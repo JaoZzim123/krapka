@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Dither Jettiá</title>
-<meta name="description" content="Pontilhado de 1 bit (dithering) com as cores do Grupo Folclórico Jettiá, com camadas separadas e recorte automático.">
+<title>Krapka</title>
+<meta name="description" content="Krapka: pontilhado de 1 bit, meio-tom e duotone para cartazes, com camadas separadas e recorte automático.">
 <meta name="theme-color" content="#15120f">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Dither Jettiá">
+<meta name="apple-mobile-web-app-title" content="Krapka">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif&display=swap">
 <style>
 :root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
 body { margin: 0; }
@@ -66,17 +66,20 @@ body {
 
 header { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
 h1 {
-  font-family: var(--f-display); font-weight: 400;
-  font-size: clamp(2.4rem, 6vw, 3.8rem); line-height: 0.95; margin: 0;
-  letter-spacing: -0.01em; display: flex; align-items: center; gap: 0.3em; text-wrap: balance;
+  font-family: var(--f-mono); font-weight: 600;
+  font-size: clamp(2.2rem, 5.5vw, 3.4rem); line-height: 0.95; margin: 0;
+  letter-spacing: -0.04em; display: flex; align-items: center; gap: 0.28em;
 }
-h1 em { font-style: normal; color: var(--accent-text); }
-h1 .star {
-  width: 0.38em; height: 0.38em; background: var(--accent); flex: none;
-  clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%);
-}
+h1 .sym { width: 1.05em; height: 1.05em; color: var(--accent); flex: none; }
+h1 .cyr { font-size: 0.36em; font-weight: 400; letter-spacing: 0; color: var(--muted); align-self: flex-end; padding-bottom: 0.3em; }
 header p { margin: 0; color: var(--muted); max-width: 52ch; }
 #install { margin-left: auto; align-self: center; }
+.foot {
+  display: flex; flex-wrap: wrap; gap: 6px 20px; justify-content: space-between;
+  padding-top: 14px; border-top: 1px solid var(--line);
+  font-family: var(--f-mono); font-size: 12px; color: var(--muted);
+}
+.foot a { color: var(--accent-text); }
 
 .app { display: grid; grid-template-columns: minmax(0, 1fr) 350px; gap: 20px; align-items: start; }
 .stage-col { min-width: 0; display: grid; gap: 10px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); }
@@ -193,8 +196,8 @@ input[type="color"] { width: 100%; height: 36px; border: 1px solid var(--line); 
 <body>
 <div class="wrap">
   <header>
-    <h1><span class="star" aria-hidden="true"></span><span>Dither <em>Jettiá</em></span></h1>
-    <p>Pontilhado de 1 bit para os cartazes e posts do grupo. A prévia é leve; o arquivo final é gerado em segundo plano, com as camadas de tinta separadas.</p>
+    <h1><svg class="sym" viewBox="0 0 110 110" fill="currentColor" aria-hidden="true"><circle cx="35.0" cy="5.0" r="3.11" /><circle cx="45.0" cy="5.0" r="3.00" /><circle cx="55.0" cy="5.0" r="3.42" /><circle cx="65.0" cy="5.0" r="4.01" /><circle cx="75.0" cy="5.0" r="4.88" /><circle cx="25.0" cy="15.0" r="2.15" /><circle cx="35.0" cy="15.0" r="2.27" /><circle cx="45.0" cy="15.0" r="2.70" /><circle cx="55.0" cy="15.0" r="3.22" /><circle cx="65.0" cy="15.0" r="3.79" /><circle cx="75.0" cy="15.0" r="4.39" /><circle cx="85.0" cy="15.0" r="5.00" /><circle cx="15.0" cy="25.0" r="2.15" /><circle cx="25.0" cy="25.0" r="2.05" /><circle cx="35.0" cy="25.0" r="2.38" /><circle cx="45.0" cy="25.0" r="2.84" /><circle cx="55.0" cy="25.0" r="3.36" /><circle cx="65.0" cy="25.0" r="3.89" /><circle cx="75.0" cy="25.0" r="4.45" /><circle cx="85.0" cy="25.0" r="5.00" /><circle cx="95.0" cy="25.0" r="5.00" /><circle cx="5.0" cy="35.0" r="3.11" /><circle cx="15.0" cy="35.0" r="2.27" /><circle cx="25.0" cy="35.0" r="2.38" /><circle cx="35.0" cy="35.0" r="2.72" /><circle cx="45.0" cy="35.0" r="3.16" /><circle cx="55.0" cy="35.0" r="3.63" /><circle cx="65.0" cy="35.0" r="4.13" /><circle cx="75.0" cy="35.0" r="4.64" /><circle cx="85.0" cy="35.0" r="5.00" /><circle cx="95.0" cy="35.0" r="5.00" /><circle cx="105.0" cy="35.0" r="5.00" /><circle cx="5.0" cy="45.0" r="3.00" /><circle cx="15.0" cy="45.0" r="2.70" /><circle cx="25.0" cy="45.0" r="2.84" /><circle cx="35.0" cy="45.0" r="3.16" /><circle cx="45.0" cy="45.0" r="3.55" /><circle cx="55.0" cy="45.0" r="3.98" /><circle cx="65.0" cy="45.0" r="4.44" /><circle cx="75.0" cy="45.0" r="4.91" /><circle cx="85.0" cy="45.0" r="5.00" /><circle cx="95.0" cy="45.0" r="5.00" /><circle cx="105.0" cy="45.0" r="5.00" /><circle cx="5.0" cy="55.0" r="3.42" /><circle cx="15.0" cy="55.0" r="3.22" /><circle cx="25.0" cy="55.0" r="3.36" /><circle cx="35.0" cy="55.0" r="3.63" /><circle cx="45.0" cy="55.0" r="3.98" /><circle cx="55.0" cy="55.0" r="4.37" /><circle cx="65.0" cy="55.0" r="4.79" /><circle cx="75.0" cy="55.0" r="5.00" /><circle cx="85.0" cy="55.0" r="5.00" /><circle cx="95.0" cy="55.0" r="5.00" /><circle cx="105.0" cy="55.0" r="5.00" /><circle cx="5.0" cy="65.0" r="4.01" /><circle cx="15.0" cy="65.0" r="3.79" /><circle cx="25.0" cy="65.0" r="3.89" /><circle cx="35.0" cy="65.0" r="4.13" /><circle cx="45.0" cy="65.0" r="4.44" /><circle cx="55.0" cy="65.0" r="4.79" /><circle cx="65.0" cy="65.0" r="5.00" /><circle cx="75.0" cy="65.0" r="5.00" /><circle cx="85.0" cy="65.0" r="5.00" /><circle cx="95.0" cy="65.0" r="5.00" /><circle cx="105.0" cy="65.0" r="5.00" /><circle cx="5.0" cy="75.0" r="4.88" /><circle cx="15.0" cy="75.0" r="4.39" /><circle cx="25.0" cy="75.0" r="4.45" /><circle cx="35.0" cy="75.0" r="4.64" /><circle cx="45.0" cy="75.0" r="4.91" /><circle cx="55.0" cy="75.0" r="5.00" /><circle cx="65.0" cy="75.0" r="5.00" /><circle cx="75.0" cy="75.0" r="5.00" /><circle cx="85.0" cy="75.0" r="5.00" /><circle cx="95.0" cy="75.0" r="5.00" /><circle cx="105.0" cy="75.0" r="5.00" /><circle cx="15.0" cy="85.0" r="5.00" /><circle cx="25.0" cy="85.0" r="5.00" /><circle cx="35.0" cy="85.0" r="5.00" /><circle cx="45.0" cy="85.0" r="5.00" /><circle cx="55.0" cy="85.0" r="5.00" /><circle cx="65.0" cy="85.0" r="5.00" /><circle cx="75.0" cy="85.0" r="5.00" /><circle cx="85.0" cy="85.0" r="5.00" /><circle cx="95.0" cy="85.0" r="5.00" /><circle cx="25.0" cy="95.0" r="5.00" /><circle cx="35.0" cy="95.0" r="5.00" /><circle cx="45.0" cy="95.0" r="5.00" /><circle cx="55.0" cy="95.0" r="5.00" /><circle cx="65.0" cy="95.0" r="5.00" /><circle cx="75.0" cy="95.0" r="5.00" /><circle cx="85.0" cy="95.0" r="5.00" /><circle cx="35.0" cy="105.0" r="5.00" /><circle cx="45.0" cy="105.0" r="5.00" /><circle cx="55.0" cy="105.0" r="5.00" /><circle cx="65.0" cy="105.0" r="5.00" /><circle cx="75.0" cy="105.0" r="5.00" /></svg><span class="word">krapka</span><span class="cyr" lang="uk">крапка</span></h1>
+    <p>Pontilhado de 1 bit para cartazes e posts. A prévia é leve; o arquivo final é gerado em segundo plano, com as camadas de tinta separadas.</p>
     <button type="button" id="install" hidden>Instalar app</button>
   </header>
 
@@ -239,7 +242,7 @@ input[type="color"] { width: 100%; height: 36px; border: 1px solid var(--line); 
         <h2>Receitas</h2>
         <div class="grid2 recipes">
           <button type="button" data-recipe="ref">Bitmap de cartaz<small>Bayer 4×4</small></button>
-          <button type="button" data-recipe="duo">Duotone Jettiá<small>preto + vermelho</small></button>
+          <button type="button" data-recipe="duo">Duotone JETTIA<small>preto + vermelho</small></button>
           <button type="button" data-recipe="blue">Pontilhado fino<small>ruído azul</small></button>
           <button type="button" data-recipe="atk">Granulado áspero<small>Atkinson</small></button>
           <button type="button" data-recipe="news">Meio-tom jornal<small>pontos a 45°</small></button>
@@ -354,6 +357,10 @@ input[type="color"] { width: 100%; height: 36px; border: 1px solid var(--line); 
       </section>
     </aside>
   </div>
+  <footer class="foot" id="foot" hidden>
+    <span>Krapka · feito por João Eudorico para o Grupo Folclórico JETTIA</span>
+    <a href="privacidade.html">Política de privacidade</a>
+  </footer>
 </div>
 
 <script>
@@ -735,7 +742,7 @@ function CORE() {
     const inks = inkColors(p, false);
     const layers = makeLayers(g, v, alpha, p, inks, mk);
     const paper = cutPaper(paperCanvas(g.W, g.H, p, mk), alpha, g, p, mk);
-    const base = `jettia-${p.algo}-${g.W}x${g.H}`;
+    const base = `krapka-${p.algo}-${g.W}x${g.H}`;
     const files = [{ name: `${base}${p.transparent ? '-transparente' : ''}.png`, blob: await toBlob(composite(paper, layers, g.W, g.H, mk)) }];
     if (kind === 'zip') {
       const names = p.tones === 3 ? ['camada-1-sombras', 'camada-2-meios-tons'] : ['camada-1-tinta'];
@@ -1205,6 +1212,7 @@ catch(err){self.postMessage({id,error:String(err&&err.message||err)});}};`;
     } finally { setBusy(false); }
   }
   $('aicut').hidden = !IS_APP;
+  $('foot').hidden = !IS_APP;
 
   let installEvt = null;
   window.addEventListener('beforeinstallprompt', (e) => { if (!IS_APP) return; e.preventDefault(); installEvt = e; $('install').hidden = false; });
